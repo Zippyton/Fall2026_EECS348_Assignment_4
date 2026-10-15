@@ -9,7 +9,7 @@ Other soruces: No other sources used
 Author: Antonio DePaolis
 Creation Date: 10/14/2026
 Revision Date: 10/15/2026
-Revisions: Changed name to Assignment5.cpp
+Revisions: Added More comments that were missing
 */
 
 #include <iostream> // Include iostream for standard input and output operations
@@ -33,7 +33,6 @@ private:    // Private member variables for the Sudoku board, empty cell coordin
 
 public: // Constructor to initialize the Sudoku board with empty cells represented by '_'
 
-    
     // Default constructor initializing the grid to empty cells
     SudokuBoard() { // Creates an empty 9x9 Sudoku board with all cells set to '_'
         for (int i = 0; i < 9; ++i) {
@@ -45,10 +44,10 @@ public: // Constructor to initialize the Sudoku board with empty cells represent
 
     // Loads the Sudoku board from a file and returns the result
     LoadResult loadFromFile(const std::string& name) {
-        fileName = name;
-        std::ifstream file(fileName);
-        if (!file.is_open()) {
-            return LoadResult::FileNotFound; // File does not exist
+        fileName = name;    // Store the file name for reference
+        std::ifstream file(fileName);   // Open the input file stream with the given file name
+        if (!file.is_open()) {  // Check if the file failed to open and return false indicating file not found
+            return LoadResult::FileNotFound; 
         }
 
         emptyCells.clear(); // Clear any previously stored empty cell coordinates
@@ -105,9 +104,9 @@ public: // Constructor to initialize the Sudoku board with empty cells represent
             if (grid[i][col] == num) return false;
         }
 
-        // Check 3x3 subgrid constraints
-        int startRow = row - row % 3;
-        int startCol = col - col % 3;
+        // Checks the 3x3 subgrid constraints
+        int startRow = row - row % 3;   // Calculate the starting row index of the 3x3 subgrid
+        int startCol = col - col % 3;   // Calculate the starting column index of the 3x3 subgrid
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 3; ++j) {
                 if (grid[startRow + i][startCol + j] == num) return false;
