@@ -4,8 +4,9 @@ Description: Solves sudoku puzzles inputted via a text file and outputs the solu
 Inputs: Text file containing sudoku puzzle 9x9 grid with '_' for empty cells and digits 1-9 for filled cells
 Outputs: Outputs a text file containing original input puzzle and it's solutions to the inputted sudoku puzzle. 
          Also outputs the number of solutions found for each puzzle. If no solution outputs "No solution found" to the output file.
-Collaborators: Gemini for whole code
-Other soruces: No other sources used 
+Collaborators: Gemini for base code and structure of the program
+Other soruces: GeeksforGeeks: (Enum class) https://www.geeksforgeeks.org/cpp/enum-classes-in-c-and-their-advantage-over-enum-datatype/
+               CoPilot: for previous idea of iterating through empty cells and backtracking to find solutions
 Author: Antonio DePaolis
 Creation Date: 10/14/2026
 Revision Date: 10/15/2026
@@ -200,7 +201,7 @@ public:
         std::string outputFilename; // Variable to hold the output filename
         const auto& solutions = solver.getSolutions();  // Retrieves the vector of found solutions from the solver
         if (inputFilename.length() >= 4 && inputFilename.substr(inputFilename.length() - 4) == ".txt") {
-            // It ends with .txt, so safely strip the extension
+            // It ends with .txt, so safely strip the extension then append _solution.txt
             outputFilename = inputFilename.substr(0, inputFilename.length() - 4)+ "_solution.txt";
         } 
 
@@ -223,7 +224,7 @@ public:
         initialBoard.printToStream(outFile);    // Print the initial puzzle to the output file
         outFile << "\n";    // Add a newline for better formatting
 
-        if (solutions.empty()) {    // If no solutions were found, write "No solution found" to the output file and notify the user
+        if (solutions.empty()) {    // If no solutions were found, writes "No solution found" to the output file and notifies the user
             outFile << "No solution found\n";
             std::cout << "No solution found. Output written to " << outputFilename << "\n";
         } else {    // If solutions were found, write each solution to the output file and notify the user of the number of solutions found
@@ -235,7 +236,7 @@ public:
                 solNum++;   // Increment solution counter for the next solution
             }
             outFile << "Solutions found: " << solutions.size() << "\n"; // Write the total number of solutions found to the output file
-            // Notify the user of the number of solutions found and the output file name
+            // Notifies the user of the number of solutions found and the output file name
             std::cout << "Solutions found: " << solutions.size() << ". Results written to " << outputFilename << "\n"; 
         }
     }
