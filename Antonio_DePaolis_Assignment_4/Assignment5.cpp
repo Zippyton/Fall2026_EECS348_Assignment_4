@@ -5,19 +5,11 @@ Inputs: Text file containing sudoku puzzle 9x9 grid with '_' for empty cells and
 Outputs: Outputs a text file containing original input puzzle and it's solutions to the inputted sudoku puzzle. 
          Also outputs the number of solutions found for each puzzle. If no solution outputs "No solution found" to the output file.
 Collaborators: Gemini for whole code
-Other soruces:
+Other soruces: No other sources used 
 Author: Antonio DePaolis
 Creation Date: 10/14/2026
 Revision Date: 10/15/2026
-Revisions: Modified and added comments, Renamed file from gemini.cpp to sudokuSolver.cpp, 
-            For class sudokuBoard made it store the empty cell coordinates in a vector of pairs inside the private section
-            Then in the public section for the loadFromFile function, made sure to empty the vector and added code to populate that vector 
-            with the coordinates of the empty cells while reading the file.
-            then used the stored empty cell coordinates to iterate through the empty cells instead of iterating through the entire grid inside the sudokuSolver class. 
-            Added enum class to SudokuBoard to return error codes for the loadFromFile function.
-            Added case statements to handle the error codes in the SudokuApp class and output appropriate error messages to the user.
-            Added a check for EOF in the run function of the SudokuApp class to handle the case where the user closes the input stream (e.g., by pressing Ctrl+D) before entering a filename.
-            Added a check to remove the .txt extension from filename before appending _solution.txt to the output file name.
+Revisions: Changed name to Assignment5.cpp
 */
 
 #include <iostream> // Include iostream for standard input and output operations
